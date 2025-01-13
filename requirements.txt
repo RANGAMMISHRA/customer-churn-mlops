@@ -1,0 +1,8 @@
+sscikit-learn
+pandas
+numpy
+mlflow
+dvc
+evidently
+databricks-feature-store
+pytest

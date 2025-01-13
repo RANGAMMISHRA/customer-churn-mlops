@@ -1,0 +1,29 @@
+customer-churn-mlops/
+│
+├── data/                           # Raw data
+│   └── churn_data.csv
+│
+├── notebooks/                      # Databricks notebooks
+│   └── data_exploration.ipynb
+│
+├── src/
+│   ├── data_preprocessing.py       # Data cleaning & feature engineering
+│   ├── train_model.py              # Model training with MLflow integration
+│   ├── evaluate_model.py           # Model evaluation
+│   └── inference.py                # Model inference
+│
+├── tests/                          # Unit tests
+│   ├── test_data_preprocessing.py
+│   └── test_train_model.py
+│
+├── mlflow_experiments/             # MLflow experiment tracking
+│
+├── .github/
+│   └── workflows/
+│       └── ci_cd_pipeline.yml      # GitHub Actions for CI/CD
+│
+├── requirements.txt
+├── README.md
+├── Dockerfile
+├── setup.py
+└── databricks_job.json             # Databricks job configuration

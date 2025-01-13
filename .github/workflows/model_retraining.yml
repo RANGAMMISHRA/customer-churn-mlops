@@ -1,0 +1,5 @@
+- name: Pull Latest Data with DVC
+  run: dvc pull
+
+- name: Check for Data Drift
+  run: python src/data_drift_check.py
