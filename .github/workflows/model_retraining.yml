@@ -1,5 +1,57 @@
-- name: Pull Latest Data with DVC
-  run: dvc pull
+name: Model Retraining Pipeline
 
-- name: Check for Data Drift
-  run: python src/data_drift_check.py
+on:
+  schedule:
+    - cron: '0 0 * * 7'  # Scheduled to run every Sunday at midnight UTC
+  workflow_dispatch:  # Allows manual triggering from GitHub UI
+
+jobs:
+  retrain_model:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code repository
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      # Step 3: Install project dependencies
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      # Step 4: Run Unit Tests
+      - name: Run Unit Tests
+        run: pytest tests/
+
+      # Step 5: Retrain the model using MLflow
+      - name: Retrain Model with MLflow
+        run: python src/train_model.py
+
+      # Step 6: Log the model in MLflow
+      - name: Log Model in MLflow
+        run: |
+          mlflow run . -P data_path=data/churn_data.csv
+
+      # Step 7: Deploy the new model to Databricks
+      - name: Deploy to Databricks
+        run: |
+          databricks jobs run-now --job-id ${{ secrets.DATABRICKS_JOB_ID }}
+        env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+
+      # Step 8: Commit Changes to the Git Repository (if model updated)
+      - name: Commit Updated Model (Optional)
+        run: |
+          git config --global user.email "your-email@example.com"
+          git config --global user.name "GitHub Actions"
+          git add .
+          git commit -m "Automated model retraining and logging with MLflow"
+          git push origin main
+        continue-on-error: true  # Prevent pipeline failure if no changes are detected
+

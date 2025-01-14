@@ -1,10 +1,11 @@
-name: CI/CD Pipeline
+name: CI/CD Pipeline with MLflow and Databricks
 
 on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -17,12 +18,12 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
-      - name: Run Unit Tests
+      - name: Run Tests
         run: pytest tests/
 
-      - name: Train Model
+      - name: Train Model with MLflow
         run: python src/train_model.py
 
       - name: Deploy to Databricks
         run: |
-          databricks jobs run-now --job-id <job-id>
+          databricks jobs run-now --job-id ${{ secrets.DATABRICKS_JOB_ID }}
