@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/HP/mlops/customer-churn-mlops/mlruns/0/ed0074118e0b4b08ade568d5aa1cd654/artifacts
+end_time: 1736872586796
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ed0074118e0b4b08ade568d5aa1cd654
+run_name: clumsy-lynx-885
+run_uuid: ed0074118e0b4b08ade568d5aa1cd654
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736872582928
+status: 3
+tags: []
+user_id: rangammishra

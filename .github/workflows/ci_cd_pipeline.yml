@@ -1,29 +1,47 @@
-name: CI/CD Pipeline with MLflow and Databricks
+name: CI/CD Pipeline for Customer Churn Project
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      # Step 1: Checkout the Repository
+      - name: Checkout Repository
         uses: actions/checkout@v2
 
+      # Step 2: Set Up Python
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
 
+      # Step 3: Install Dependencies
       - name: Install Dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - name: Run Tests
+      # Step 4: Run Unit Tests
+      - name: Run Unit Tests with Pytest
         run: pytest tests/
 
-      - name: Train Model with MLflow
+      # Step 5: Train the Model and Log with MLflow
+      - name: Train the Model
         run: python src/train_model.py
 
-      - name: Deploy to Databricks
+      # Step 6: Trigger Databricks Job for Model Deployment
+      - name: Trigger Databricks Job
         run: |
           databricks jobs run-now --job-id ${{ secrets.DATABRICKS_JOB_ID }}
+        env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+
+      # Step 7: Notify on CI/CD Completion
+      - name: Notify Success
+        run: echo "CI/CD Pipeline completed successfully!"

@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/HP/mlops/customer-churn-mlops/mlruns/145894331283472942/637369bbe46045f4b145e0a9f7c9856d/artifacts
+end_time: 1736872846917
+entry_point_name: ''
+experiment_id: '145894331283472942'
+lifecycle_stage: active
+run_id: 637369bbe46045f4b145e0a9f7c9856d
+run_name: overjoyed-donkey-756
+run_uuid: 637369bbe46045f4b145e0a9f7c9856d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736872837846
+status: 3
+tags: []
+user_id: rangammishra

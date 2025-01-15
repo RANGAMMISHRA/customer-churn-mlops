@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/HP/mlops/customer-churn-mlops/mlruns/145894331283472942/5ef57e1f8fff431684b5fb44c6e0dc85/artifacts
+end_time: 1736873039737
+entry_point_name: ''
+experiment_id: '145894331283472942'
+lifecycle_stage: active
+run_id: 5ef57e1f8fff431684b5fb44c6e0dc85
+run_name: treasured-yak-820
+run_uuid: 5ef57e1f8fff431684b5fb44c6e0dc85
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736873035809
+status: 3
+tags: []
+user_id: rangammishra

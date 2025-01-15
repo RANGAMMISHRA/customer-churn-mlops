@@ -1,0 +1,6 @@
+artifact_location: file:///mnt/c/Users/HP/mlops/customer-churn-mlops/mlruns/145894331283472942
+creation_time: 1736872837648
+experiment_id: '145894331283472942'
+last_update_time: 1736872837648
+lifecycle_stage: active
+name: Customer-Churn-Experiment

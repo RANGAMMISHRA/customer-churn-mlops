@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/HP/mlops/customer-churn-mlops/mlruns/145894331283472942/0e396fbf59fb44b6a9dd4bb413de5b5e/artifacts
+end_time: 1736872948155
+entry_point_name: ''
+experiment_id: '145894331283472942'
+lifecycle_stage: active
+run_id: 0e396fbf59fb44b6a9dd4bb413de5b5e
+run_name: marvelous-flea-538
+run_uuid: 0e396fbf59fb44b6a9dd4bb413de5b5e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736872943898
+status: 3
+tags: []
+user_id: rangammishra
