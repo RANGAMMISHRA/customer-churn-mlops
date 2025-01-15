@@ -1,4 +1,4 @@
-sscikit-learn
+scikit-learn
 pandas
 numpy
 mlflow

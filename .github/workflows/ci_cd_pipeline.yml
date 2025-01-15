@@ -14,34 +14,29 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      # Step 2: Set Up Python
+      # Step 2: Set up Python Environment
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
 
       # Step 3: Install Dependencies
-      - name: Install Dependencies
+      - name: Install Python Dependencies
         run: |
-          pip install --upgrade pip
           pip install -r requirements.txt
 
       # Step 4: Run Unit Tests
       - name: Run Unit Tests with Pytest
         run: pytest tests/
 
-      # Step 5: Train the Model and Log with MLflow
-      - name: Train the Model
-        run: python src/train_model.py
-
-      # Step 6: Trigger Databricks Job for Model Deployment
-      - name: Trigger Databricks Job
+      # Step 5: Trigger Databricks Job
+      - name: Trigger Databricks Job for Model Training
         run: |
           databricks jobs run-now --job-id ${{ secrets.DATABRICKS_JOB_ID }}
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
 
-      # Step 7: Notify on CI/CD Completion
-      - name: Notify Success
+      # Step 6: Notify Success
+      - name: CI/CD Completed Successfully
         run: echo "CI/CD Pipeline completed successfully!"
